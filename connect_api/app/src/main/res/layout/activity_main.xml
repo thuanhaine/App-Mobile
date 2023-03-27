@@ -21,11 +21,57 @@
         android:id="@+id/btn_fet"
         android:layout_gravity="center" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Result will Show here"
-        android:textSize="25sp"
-        android:id="@+id/result_tv"/>
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Name: "
+            android:textSize="25sp"
+            android:id="@+id/lable_name_tv"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="None"
+            android:textSize="25sp"
+            android:id="@+id/output_name_tv"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Email: "
+            android:textSize="25sp"
+            android:id="@+id/lable_email_tv"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="None"
+            android:textSize="25sp"
+            android:id="@+id/output_email_tv"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Phone: "
+            android:textSize="25sp"
+            android:id="@+id/lable_phone_tv"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="None"
+            android:textSize="25sp"
+            android:id="@+id/output_phone_tv"/>
+    </LinearLayout>
+
 
 </LinearLayout>

@@ -17,6 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.io.Console;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -24,7 +25,7 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     EditText cityEd;
-    TextView resultTv;
+    TextView outputName, outputEmail,outputPhone;
     Button btnFetch;
     String cityName;
 
@@ -34,7 +35,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         cityEd = findViewById(R.id.city_et);
-        resultTv = findViewById(R.id.result_tv);
+        outputName = findViewById(R.id.output_name_tv);
+        outputEmail = findViewById(R.id.output_email_tv);
+        outputPhone = findViewById(R.id.output_phone_tv);
         btnFetch = findViewById(R.id.btn_fet);
 
         btnFetch.setOnClickListener(this);
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void getData( ) throws MalformedURLException {
-        Uri uri = Uri.parse("https://datausa.io/api/data?drilldowns=State&measures=Population&year=latest").buildUpon().build();
+        Uri uri = Uri.parse("https://jsonplaceholder.typicode.com/users").buildUpon().build();
         URL url = new URL(uri.toString());
         new DOTask().execute(url);
     }
@@ -83,24 +86,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         public void parseJon (String data) throws JSONException{
             JSONObject jsonObject = null;
             try {
-                jsonObject = new JSONObject(data);
+//                jsonObject = new JSONObject(" {\"data\": " + data + "}");
+                System.out.println("hehe"+data);
+//                JSONArray dataArray = jsonObject.getJSONArray("data");
+                JSONArray dataArray = new JSONArray(data);
+                for (int i = 0; i<dataArray.length();i++){
+                    JSONObject dataItem = dataArray.getJSONObject(i);
+                    String userN = dataItem.get("username").toString();
+                    if(userN.equals(cityName)){
+                        outputName.setText(dataItem.get("name").toString());
+                        outputEmail.setText(dataItem.get("email").toString());
+                        outputPhone.setText(dataItem.get("phone").toString());
+                        break;
+                    }
+                    else {
+                        outputName.setText("Not found");
+                    }
+                }
             }catch (JSONException e){
                 e.printStackTrace();
             }
-            JSONArray cityArray = jsonObject.getJSONArray("data");
 
-            for (int i = 0; i<cityArray.length();i++){
-                JSONObject cityo = cityArray.getJSONObject(i);
-                String cityn = cityo.get("State").toString();
-                if(cityn.equals(cityName)){
-                    String population = cityo.get("Population").toString();
-                    resultTv.setText(population);
-                    break;
-                }
-                else {
-                    resultTv.setText("Not found");
-                }
-            }
         }
     }
 }
