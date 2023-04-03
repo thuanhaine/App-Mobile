@@ -9,9 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
+
+import java.sql.Array;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView resultTv, solutionTv;
+
+    String history[] = new String[10];
 
     MaterialButton btn_0, btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8, btn_9,btn_AC, btn_Percent,btn_Delete, btn_Multiply, btn_Devide, btn_Minus,btn_Equal,btn_Plus,btn_Dot,btn_000;
 
@@ -61,13 +66,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             solutionTv.setText("");
             resultTv.setText("0");
             return;
-
         }
 
         if (buttonText.equals("=")) {
-
             solutionTv.setText(resultTv.getText());
+            for(int index = history.length - 1; index > 0 ; index--){
+                if(index>0){
+                    history[index] = history[index-1];
+                }
+            }
+            history[0] = resultTv.getText().toString();
+            for(int i = 0 ; i < history.length - 1 ; i++){
+                System.out.println(history[i]);
+            }
             resultTv.setText("");
+
             return;
         }
         if(buttonText.equals("Del")){
