@@ -11,8 +11,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ENTER city Name"
-        android:id="@+id/city_et"
+        android:hint="ENTER User Name"
+        android:id="@+id/user_et"
         android:textSize="30sp"/>
     <Button
         android:layout_width="wrap_content"

@@ -24,40 +24,43 @@
         android:layout_height="fill_parent"
         android:orientation="vertical"
         android:layout_weight="1">
+
         <Button
-            android:layout_width="500px"
-            android:layout_height="200px"
             android:id="@+id/new_game"
-            android:text="New Game"
+            android:layout_width="300px"
+            android:layout_height="200px"
+            android:layout_gravity="center"
+            android:backgroundTint="#AF6868"
             android:lines="1"
             android:padding="10px"
-            android:layout_gravity="center"/>
+            android:text="New Game" />
         <Button
-            android:layout_width="500px"
+            android:layout_width="300px"
             android:layout_height="200px"
             android:id="@+id/continue_game"
             android:text="Continue Game"
             android:lines="1"
             android:padding="10px"
+            android:backgroundTint="#AF6868"
             android:layout_gravity="center"/>
         <Button
-            android:layout_width="500px"
+            android:layout_width="300px"
             android:layout_height="200px"
             android:id="@+id/help_game"
             android:text="Help Game"
             android:lines="1"
             android:padding="10px"
+            android:backgroundTint="#AF6868"
             android:layout_gravity="center"/>
         <Button
-            android:layout_width="500px"
+            android:layout_width="300px"
             android:layout_height="200px"
             android:id="@+id/quick_game"
             android:text="Quick Game"
             android:lines="1"
             android:padding="10px"
+            android:backgroundTint="#AF6868"
             android:layout_gravity="center"/>
-
     </LinearLayout>
-
 
     </LinearLayout>

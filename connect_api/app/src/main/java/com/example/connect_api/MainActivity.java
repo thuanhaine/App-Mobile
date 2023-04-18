@@ -24,17 +24,17 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    EditText cityEd;
+    EditText userEd;
     TextView outputName, outputEmail,outputPhone;
     Button btnFetch;
-    String cityName;
+    String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        cityEd = findViewById(R.id.city_et);
+        userEd = findViewById(R.id.user_et);
         outputName = findViewById(R.id.output_name_tv);
         outputEmail = findViewById(R.id.output_email_tv);
         outputPhone = findViewById(R.id.output_phone_tv);
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v.getId()== R.id.btn_fet){
-            cityName = cityEd.getText().toString();
+            userName = userEd.getText().toString();
             try {
                 getData();
             } catch (MalformedURLException e) {
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 for (int i = 0; i<dataArray.length();i++){
                     JSONObject dataItem = dataArray.getJSONObject(i);
                     String userN = dataItem.get("username").toString();
-                    if(userN.equals(cityName)){
+                    if(userN.equals(userName)){
                         outputName.setText(dataItem.get("name").toString());
                         outputEmail.setText(dataItem.get("email").toString());
                         outputPhone.setText(dataItem.get("phone").toString());
